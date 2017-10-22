@@ -1,7 +1,9 @@
 package co.miniforge.corey.stringanalyzer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -34,6 +36,20 @@ public class AnalyzerActivity extends AppCompatActivity {
         locateViews();
 
         bindData();
+
+        bindFunctionality();
+    }
+
+    //Fixed - Analyze another string button doesn’t take you back to the first screen (normal)
+    void bindFunctionality() {
+        backToInputButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), InputActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     void locateViews() {
